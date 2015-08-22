@@ -50,7 +50,35 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2671771648
 BOARD_CACHEIMAGE_PARTITION_SIZE := 209715200
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 
-TARGET_RECOVERY_FSTAB = device/sony/shinano/rootdir/fstab.shinano
+# Recovery
+TARGET_RECOVERY_FSTAB := device/sony/shinano-common/rootdir/twrp.fstab
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+
+# TWRP flags
+DEVICE_RESOLUTION := 1080x1920
+TW_THEME := portrait_hdpi
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+RECOVERY_SDCARD_ON_DATA := true
+TW_HAS_NO_RECOVERY_PARTITION := true
+TW_FLASH_FROM_STORAGE := true
+TW_EXTERNAL_STORAGE_PATH := "/external_sd"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
+TW_DEFAULT_EXTERNAL_STORAGE := true
+# TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_JB_CRYPTO := true
+TW_CRYPTO_FS_TYPE := "ext4"
+TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/msm_sdcc.1/by-name/userdata"
+TW_CRYPTO_MNT_POINT := "/data"
+TW_CRYPTO_FS_OPTIONS := "nosuid,nodev,barrier=1,noauto_da_alloc,discard"
+TW_CRYPTO_FS_FLAGS := "0x00000406"
+TW_CRYPTO_KEY_LOC := "footer"
+TW_INCLUDE_FUSE_EXFAT := true
+# TW_BOARD_CUSTOM_GRAPHICS := ../../../device/sony/shinano-common/recovery/twrpgraphics.c
+TW_BRIGHTNESS_PATH := /sys/class/leds/wled:backlight/brightness
+TW_MAX_BRIGHTNESS := 4095
+TW_NO_USB_STORAGE := true
+TW_NO_SCREEN_BLANK := true
+#TARGET_USERIMAGES_USE_F2FS := true
 
 USE_OPENGL_RENDERER := true
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
